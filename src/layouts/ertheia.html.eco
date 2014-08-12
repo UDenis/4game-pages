@@ -7,6 +7,7 @@
 		<script src="/js/imgsupport.js" data-4game-ignore="true"></script>
 		<script src="/js/jquery-1.10.2.min.js" data-4game-ignore="true"></script>
 		<script src="/js/preload.js" data-4game-ignore="true"></script>
+		<script src="/js/patchnote-voting.js" ></script>
 	</head>
 	<body class="pL2Ertheia">
 
