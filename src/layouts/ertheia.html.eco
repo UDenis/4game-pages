@@ -7,13 +7,14 @@
 		<script src="/js/imgsupport.js" data-4game-ignore="true"></script>
 		<script src="/js/jquery-1.10.2.min.js" data-4game-ignore="true"></script>
 		<script src="/js/preload.js" data-4game-ignore="true"></script>
-		<script src="/js/patchnote-voting.js" ></script>
+		
 	</head>
 	<body class="pL2Ertheia">
 
 		<link href="/b/l2-ertheia.css" rel="stylesheet" type="text/css">
 		<div class="pL2Ertheia_bMainContent">
 			<script src="/js/common.js"></script>
+			
 			<div class="pL2Ertheia_bMainContent__eBackground"></div>
 			<nav class="pL2Ertheia_bPlanets">
 				<a class="pL2Ertheia_bPlanets__ePlanet pL2Ertheia_bPlanets__ePlanet_mClasses">
@@ -311,7 +312,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="bPatchnoteContent">
+			<div class="bPatchnoteContent" data-js-widgets="patchnotes-widget">
 				<%- @content %>
 			</div>
 		</section>

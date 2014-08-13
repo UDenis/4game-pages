@@ -1,6 +1,6 @@
 $(function() {
-	$('.pL2Ertheia_bPlanets').delay(300).fadeIn(300).addClass('pL2Ertheia_bPlanets_mStart');
 
+	$('.pL2Ertheia_bPlanets').delay(300).fadeIn(300).addClass('pL2Ertheia_bPlanets_mStart');
 
 	/* --------------- [ Modal Window ]  ---------- */
 
