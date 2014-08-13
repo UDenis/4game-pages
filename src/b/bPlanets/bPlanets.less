@@ -152,14 +152,11 @@
 					}
 				}
 				&_mClasses{
-					-webkit-transform: translate( -189px, -340px ) !important;
-					transform: translate( -189px, -340px ) !important;
+					-webkit-transform: translate( -229px, -340px ) !important;
+					transform: translate( -229px, -340px ) !important;
 					&:hover:not(.active){
-						&:before{
-							background-image: url('bPlanets/classes2-hover.gif');
-						}
 						&:after{
-							opacity: 0;
+							background-image: url('bPlanets/ePlanets2__hover.png');
 						}
 					}
 					&:after{
@@ -167,29 +164,64 @@
 					}
 				}
 				&_mAlchemy{
-					-webkit-transform: translate( -63px, -340px ) !important;
-					transform: translate( -63px, -340px ) !important;
+					-webkit-transform: translate( -103px, -340px ) !important;
+					transform: translate( -103px, -340px ) !important;
 					&:hover:not(.active){
-						&:before{
-							background-image: url('bPlanets/alchemy-hover.gif');
-						}
 						&:after{
+							background-image: url('bPlanets/ePlanets3__hover.png');
+
 							opacity: 0;
+							-webkit-transform: scale(0.4) translate(30px, -20px);
+							transform: scale(0.4) translate(30px, -20px);
+
+							-webkit-transform-origin: 30% 80%;
+							transform-origin: 30% 80%;
+
+							-webkit-animation: planets3 1s linear infinite;
+							animation: planets3 1s linear infinite;
+
+							@keyframes planets3 {
+								  0% { opacity: 0; transform: scale(0.5) translate(30px, -20px); }
+								 10% { opacity: 1; }
+								 20% { transform: scale(0.55) translate(30px, -20px); }
+								 40% { transform: scale(0.60) translate(30px, -20px); }
+								 70% { opacity: 1; }
+								 80% { opacity: 0; transform: scale(0.65) translate(30px, -20px); }
+								100% { opacity: 0; transform: scale(0.70) translate(30px, -20px); }
+							}
+							@-webkit-keyframes planets3 {
+								  0% { opacity: 0; -webkit-transform: scale(0.5) translate(30px, -20px); }
+								 10% { opacity: 1; }
+								 20% { -webkit-transform: scale(0.55) translate(30px, -20px); }
+								 40% { -webkit-transform: scale(0.60) translate(30px, -20px); }
+								 70% { opacity: 1; }
+								 80% { opacity: 0; -webkit-transform: scale(0.65) translate(30px, -20px); }
+								100% { opacity: 0; -webkit-transform: scale(0.70) translate(30px, -20px); }
+							}
 						}
 					}
 					&:after{
-						background-image: url('bPlanets/ePlanets3-gray.png');
+						 background-image: url('bPlanets/ePlanets3-gray.png');
 					}
 				}
 				&_mVideo{
-					-webkit-transform: translate( 64px, -340px ) !important;
-					transform: translate( 64px, -340px ) !important;
+					-webkit-transform: translate( 24px, -340px ) !important;
+					transform: translate( 24px, -340px ) !important;
 					&:hover:not(.active){
-						&:before{
-							background-image: url('bPlanets/video-hover.png');
-						}
 						&:after{
-							opacity: 0;
+							opacity: 1;
+							background-image: url('bPlanets/ePlanets1__hover.png');
+							-webkit-animation: planets1 1s linear 1;
+							animation: planets1 1s linear 1;
+
+							@keyframes planets1 {
+								from { opacity: 0; }
+								to { opacity: 1; }
+							}
+							@-webkit-keyframes planets1 {
+								from { opacity: 0; }
+								to { opacity: 1; }
+							}
 						}
 					}
 					&:after{
@@ -197,14 +229,36 @@
 					}
 				}
 				&_mLocation{
-					-webkit-transform: translate( 189px, -340px ) !important;
-					transform: translate( 189px, -340px ) !important;
+					-webkit-transform: translate( 149px, -340px ) !important;
+					transform: translate( 149px, -340px ) !important;
 					&:hover:not(.active){
-						&:before{
-							background-image: url('bPlanets/locations-hover.gif');
-						}
 						&:after{
-							opacity: 0;
+							background-image: url('bPlanets/ePlanets4__hover.png');
+							background-position: center bottom;
+							-webkit-transform: rotate(-4deg);
+							transform: rotate(-4deg);
+
+							-webkit-transform-origin: 30% 100% 0;
+							transform-origin: 30% 100% 0;
+
+							-webkit-animation: planets4 1s linear infinite;
+							animation: planets4 1s linear infinite;
+
+							@keyframes planets4 {
+								  0% { transform: rotate(-4deg); }
+								 40% { transform: rotate( 6deg); }
+								 60% { transform: rotate( 3deg); }
+								 80% { transform: rotate( 8deg); }
+								100% { transform: rotate(-4deg); }
+							}
+							@-webkit-keyframes planets4 {
+								  0% { -webkit-transform: rotate(-4deg); }
+								 40% { -webkit-transform: rotate( 6deg); }
+								 60% { -webkit-transform: rotate( 3deg); }
+								 80% { -webkit-transform: rotate( 8deg); }
+								100% { -webkit-transform: rotate(-4deg); }
+							}
+
 						}
 					}
 					&:after{
@@ -217,6 +271,7 @@
 					color:#fff;
 					&:after{
 						opacity: 1;
+						box-shadow: 0 0 35px 0 rgba(255, 255, 255, 0.8);
 					}
 				}
 			}

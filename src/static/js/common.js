@@ -113,7 +113,7 @@ $(function() {
 
 	$('.pL2Ertheia_bModalDialog__eCloseBtn').on('click', function() {
 		$('.pL2Ertheia_bPlanets__ePlanet').css({
-			transform: 'wrong',
+			transform: '',
 			animation: 'orbit 20s linear infinite'
 		});
 		$('.pL2Ertheia_bPlanets').removeClass('bg-active-show');

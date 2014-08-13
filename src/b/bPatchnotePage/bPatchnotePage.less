@@ -111,6 +111,7 @@
 	p > img {
 		display: block;
 		margin: 0 auto;
+		max-width: 100%;
 	}
 	
 	hr {
@@ -242,6 +243,11 @@
 			table {
 				width: 50%;
 				float: left;
+
+				&:only-child {
+					float: none;
+					margin: 0 auto;
+				}
 			}
 			
 			&:after {
