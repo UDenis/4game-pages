@@ -1,0 +1,26 @@
+{
+  "name": "lineage2-ertheia",
+  "version": "0.0.0",
+  "homepage": "https://github.com/InnovaCo/4game-pages/tree/lineage2-ertheia",
+  "authors": [
+    "Denis Maslov <denis.maslov@inn.ru>"
+  ],
+  "description": "lineage2-ertheia page",
+  "keywords": [
+    "lineage2",
+    "ertheia"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+
+  "scripts": {
+    "install": ["npm install", "./node_modules/.bin/gulp build --env=production", "docpad generate --offline"]
+  }
+
+}
