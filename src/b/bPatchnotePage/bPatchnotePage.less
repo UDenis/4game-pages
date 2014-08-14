@@ -81,7 +81,90 @@
 }
 	
 	
-	
+.bPatchnotesVoting {
+	position: absolute;
+	top: 50%;
+	right: -65px;
+	font-size: 0;
+	margin-top: -30px;
+
+	&-disabled {
+			& .bPatchnotesVoting__voteElements__button {
+				opacity: 0.2;
+				cursor: auto;
+
+				&:hover {
+					background: none;
+				}
+				
+			}
+	}
+
+	&__voteElements {
+		width: 33px;
+		display: inline-table;
+
+		&__voteResult {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 22px;
+			text-align: center;
+			text-indent: -3px;
+			font-size: 11px;
+			color: #878787;
+			opacity: 0.5;
+		}
+
+		&__button {
+			content: ' ';
+			background: none;
+			padding: 0;
+			margin: 0;
+			outline: none;
+			border: 1px solid #333;
+			height: 24px;
+			width: 33px;
+			position: relative;
+			cursor: pointer;
+			opacity: 0.6;
+			display: inline-block;
+
+			&:before {
+				content: '';
+				width: 12px;
+				height: 14px;
+				position: absolute;
+				background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAPCAYAAACfvC2ZAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAVJJREFUeNpi/P//PwMuMGvWrBYgVZ2WlsbIMEgAEx7HghypwjDIAAsOx3ICqflAHE4PR0RHRzsAqQYgtkeTaly6dGkD3hCeNm2a1J8/fw4BcTgQMwBxIy0dm5SUJMnOzr4fiO2BmAEN1wPlURzMiJyGJ02axAWkTgOxFkwsLy+Ppuk3MzPTF0htIitJ/Pr1ayqyY0Ggp6cHJVeWlJRQ1QPAUDQmKQ23tbX9H8hMRLKDf/78SYr659R2MAcHB2kO/vHjBynqz9IghCVpGcJUdzAbGxshJQuA+SZx0DgYPRMDSyrkPHUNiLNRQnj69OmMSGUiqMyrx2P+GVpmQGAd0MDCwoJsl39WVtY3nBXHvHnzGoAh3ggKdTR8EIgdgfLPaelgoGPrQQ4G4pVAbAd07DN0NYz4Gj/0BsAmAcgxK4E4Etjg+k9S42cAwR1cjgUBgAADAGpQhX5qXhJjAAAAAElFTkSuQmCC');
+				top: 50%;
+				left: 50%;
+				margin: -7px 0 0 -6px;
+			}
+
+			&-active, &:hover {
+				background: #333;
+			}
+		}
+
+		&-plus{
+			& .bPatchnotesVoting__voteElements__button {
+				margin-right: -1px;
+				border-radius: 3px 0 0 3px;
+			}
+		}
+
+		&-minus{
+			& .bPatchnotesVoting__voteElements__button {
+				border-radius: 0 3px 3px 0;
+
+				&:before {
+					background-position: top right;
+				}
+			}
+		}
+	}
+}
+
 	
 	
 /* ----------------------- [ Content ] */
@@ -150,6 +233,7 @@
 		padding: 0;
 	
 		li {
+			position: relative;
 			font: 18px/28px Arial, sans-serif;
 			margin: 0 0 16px 0;
 	
