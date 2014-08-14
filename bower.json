@@ -20,7 +20,7 @@
   ],
 
   "scripts": {
-    "install": ["npm install", "./node_modules/.bin/gulp build --env=production", "docpad generate --offline"]
+    "install": ["npm install", "./node_modules/.bin/gulp build --env=production", "docpad generate"]
   }
 
 }
