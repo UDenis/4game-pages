@@ -3,3 +3,6 @@
 
 #node.js packages
 node_modules/
+
+/out
+.docpad.cson
