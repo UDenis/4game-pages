@@ -1,13 +1,13 @@
 {
   "name": "lineage2-ertheia",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/InnovaCo/4game-pages/tree/lineage2-ertheia",
   "description": "lineage2-ertheia page",
   "keywords": [
     "lineage2",
     "ertheia"
   ],
-  "license": "MIT",
+
   "ignore": [
     "**/.*",
     "node_modules",
