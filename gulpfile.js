@@ -12,8 +12,8 @@ gulp.task('css', function() {
         .pipe(less({
             compress: false
         }))
-        .pipe(csscomb())
-        //        .pipe(autoprefixer("last 2 version"))
+        //.pipe(csscomb())
+        //.pipe(autoprefixer("last 2 version"))
         .pipe(gulp.dest('b/'));
 });
 
