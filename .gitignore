@@ -7,3 +7,6 @@ bower_components/
 
 #IDE garbage
 .idea/
+
+#compiled docpad files
+out/
