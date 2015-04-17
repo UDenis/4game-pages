@@ -1,0 +1,41 @@
+{
+  "name": "4game-games-rating",
+  "version": "1.0.0",
+  "description": "Pages of ratings for Lineage2Classic and APB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/InnovaCo/4game-pages.git"
+  },
+  "author": "Denis Maslov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/InnovaCo/4game-pages/issues"
+  },
+  "homepage": "https://github.com/InnovaCo/4game-pages",
+
+  "browserify-shim": {
+    "react": "global:React",
+    "jquery": "global:$"
+  },
+
+  "browserify": {
+    "transform": [ "browserify-shim" ]
+  },
+
+  "devDependencies": {
+    "babelify": "^6.0.2",
+    "connect-livereload": "^0.5.3",
+    "express": "^4.12.3",
+    "gulp": "^3.8.11",
+    "gulp-browserify": "^0.5.1",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-stylus": "^2.0.1",
+    "opn": "^1.0.1",
+    "run-sequence": "^1.0.2",
+    "tiny-lr": "^0.1.5"
+  }
+}
