@@ -16,18 +16,18 @@
     "url": "https://github.com/InnovaCo/4game-pages/issues"
   },
   "homepage": "https://github.com/InnovaCo/4game-pages",
-
   "browserify-shim": {
     "react": "global:React",
     "jquery": "global:$"
   },
-
   "browserify": {
-    "transform": [ "browserify-shim" ]
+    "transform": [
+      "browserify-shim"
+    ]
   },
-
   "devDependencies": {
     "babelify": "^6.0.2",
+    "browserify-shim": "^3.8.5",
     "connect-livereload": "^0.5.3",
     "express": "^4.12.3",
     "gulp": "^3.8.11",
