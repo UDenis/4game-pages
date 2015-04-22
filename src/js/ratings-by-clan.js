@@ -126,6 +126,9 @@ export default {
         },
         ByAmountOfLevels:{
             field: 'sum_member_level'
+        },
+        ByAdena: {
+            field: ''
         }
     },
 

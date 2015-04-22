@@ -84,7 +84,7 @@ export default {
 
     tabs: [
         {label: 'Опыт', value: 'BySkill'},
-        {label: 'PvP', value: 'ByPvP'},
+        {label: 'PvP/PK', value: 'ByPvP'},
         {label: 'Адена', value: 'ByAdena'}
     ],
 
@@ -119,7 +119,8 @@ export default {
 
     sortInfo:{
         BySkill:{field: 'exp_cnt'},
-        ByPvP: {field: ''}
+        ByPvP: {field: ''},
+        ByAdena: {field: ''}
     },
 
     search(item, searchString){
