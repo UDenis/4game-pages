@@ -16,6 +16,10 @@
         color: #1663b3;
       }
 
+      &-right {
+        text-align: right;
+      }
+
       & div {
         display: inline-block;
         vertical-align: middle;
@@ -58,6 +62,27 @@
       padding: 8px 15px 8px 0;
       font: 13px / 16px Arial, Sans-Serif;
       white-space: nowrap;
+
+      &-right {
+        text-align: right;
+      }
+    }
+
+    &--row {
+      &:hover {
+        & .pRatings--table--cell {
+          color: #987324;
+          background-color: #f4efe0;
+          cursor: pointer;
+        }
+      }
+
+      &-selected {
+        & .pRatings--table--cell {
+          background-color: #ecf1f8;
+          cursor: pointer;
+        }
+      }
     }
   }
 }

@@ -11,7 +11,8 @@ export default React.createClass({
 
     getInitialState(){
         return {
-            loaing: false
+            loaing: false,
+            selectedItem: null
         };
     },
 
@@ -23,25 +24,31 @@ export default React.createClass({
         }
     },
 
+    selectRow(item){
+        this.setState({
+            selectedItem: item
+        })
+    },
+
     render(){
         var orderBy = this.props.orderBy ;
         return (
             <table className="pRatings--table">
                 <thead>
                 <tr>
-                    <th className='pRatings--table--header-cell'>
+                    <th className='pRatings--table--header-cell pRatings--table--header-cell-right'>
                         №
                     </th>
 
                     {
-                        this.props.headers.map((header)=> {
+                        this.props.headers.map((header, index)=> {
                             if (header.sortable) {
                                 var arrowsClass = "pRatings--table--header-cell--arrows";
                                 if (orderBy === header.field ){
                                     arrowsClass += ' pRatings--table--header-cell--arrows-desc'
                                 }
                                 return (
-                                    <th onClick={this.onSort.bind(this, header.field)} className="pRatings--table--header-cell pRatings--table--header-cell-sortable">
+                                    <th onClick={this.onSort.bind(this, header.field)} className={this.cellClassName(index,'pRatings--table--header-cell pRatings--table--header-cell-sortable')}>
                                         <div>
                                             <span>{header.title}</span>
                                         </div>
@@ -50,7 +57,7 @@ export default React.createClass({
                                 );
                             } else {
                                 return (
-                                    <th className="pRatings--table--header-cell">{header.title}</th>
+                                    <th className={this.cellClassName(index,'pRatings--table--header-cell')}>{header.title}</th>
                                 );
                             }
                         })
@@ -62,14 +69,18 @@ export default React.createClass({
                 <tbody>
                 {
                     this.props.data.map((item, index)=> {
+                        var rowClassName = 'pRatings--table--row';
+                        if (item === this.state.selectedItem){
+                            rowClassName = ' pRatings--table--row-selected'
+                        }
                         return (
-                            <tr>
-                                <td>{index + 1}</td>
+                            <tr className={rowClassName} onClick={this.selectRow.bind(this, item)}>
+                                <td  className="pRatings--table--cell pRatings--table--header-cell-right">{index + 1}</td>
                                 {
-                                    this.props.headers.map((header)=> {
+                                    this.props.headers.map((header, index)=> {
                                         return (
                                             <td
-                                                className="pRatings--table--cell"
+                                                className={this.cellClassName(index,'pRatings--table--cell')}
                                                 dangerouslySetInnerHTML={{__html : header.format(item)}}></td>
                                         );
                                     })
@@ -82,6 +93,14 @@ export default React.createClass({
                 </tbody>
             </table>
         );
+    },
+
+    cellClassName(index, initClassNames ){
+        if (index === 0 || index === this.props.headers.length - 1) {
+            return initClassNames + ' pRatings--table--header-cell-right';
+        } else {
+            return initClassNames;
+        }
     },
 
     headerCellClass(){
