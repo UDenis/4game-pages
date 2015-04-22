@@ -15,7 +15,16 @@ export default React.createClass({
         };
     },
 
+    onSort(orderBy){
+        this.setProps({orderBy})
+
+        if (this.props.onSort){
+            setTimeout(()=>this.props.onSort(orderBy));
+        }
+    },
+
     render(){
+        var orderBy = this.props.orderBy ;
         return (
             <table className="pRatings--table">
                 <thead>
@@ -27,12 +36,16 @@ export default React.createClass({
                     {
                         this.props.headers.map((header)=> {
                             if (header.sortable) {
+                                var arrowsClass = "pRatings--table--header-cell--arrows";
+                                if (orderBy === header.field ){
+                                    arrowsClass += ' pRatings--table--header-cell--arrows-desc'
+                                }
                                 return (
-                                    <th className="pRatings--table--header-cell">
+                                    <th onClick={this.onSort.bind(this, header.field)} className="pRatings--table--header-cell pRatings--table--header-cell-sortable">
                                         <div>
                                             <span>{header.title}</span>
                                         </div>
-                                        <i className="pRatings--table--header-cell--arrows"></i>
+                                        <i className={arrowsClass}></i>
                                     </th>
                                 );
                             } else {

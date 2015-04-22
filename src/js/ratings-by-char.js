@@ -77,7 +77,10 @@ export default {
 
     url: 'http://cdn.inn.ru/webdav/ratings/files/l2cl_chars.ratings.characters.json',
 
-    info: 'Top 1000 персонажей',
+    info(){
+        var h = new Date().getHours();
+        return `Top ${this.limit} персонажей. Обновлено ${h} часов назад.`;
+    },
 
     tabs: [
         {label: 'Опыт', value: 'BySkill'},
@@ -95,18 +98,18 @@ export default {
 
     tableHeaders: {
         BySkill: commonTableHeaders.concat({
-            title: 'Опыт', field: 'exp_cnt',
+            title: 'Опыт', field: 'exp_cnt', sortable:true,
             format(item){
                 return prettifyNumber(item.exp_cnt);
             }
         }),
         ByPvP: commonTableHeaders.concat({
-            title: 'PvP', field: '',
+            title: 'PvP', field: '',sortable:true,
             format(item){
                 return '????';//prettifyNumber(item.exp_cnt);
             }
         }, {
-            title: 'PK', field: 'pk_cnt',
+            title: 'PK', field: 'pk_cnt',sortable:true,
             format(item){
                 return prettifyNumber(item.pk_cnt);
             }
@@ -114,12 +117,38 @@ export default {
         ByAdena: commonTableHeaders
     },
 
-    search(item, searchString){
-        return true
+    sortInfo:{
+        BySkill:{field: 'exp_cnt'},
+        ByPvP: {field: ''}
     },
 
-    sort(a, b, orderBy){
-        return 0;
+    search(item, searchString){
+        return (item.char || '').toLowerCase().indexOf((searchString || '').toLowerCase())>=0;
+    },
+
+    sort(itemA, itemB, orderBy){
+        var orderFields = [orderBy, 'level', 'use_time_sec', 'char'];
+
+        function sort(itemA, itemB, orderBy) {
+            var a = itemA[orderBy];
+            var b = itemB[orderBy];
+
+            if (a < b) {
+                return -1;
+            }
+
+            if (a > b) {
+                return 1;
+            }
+
+            if (orderFields.length) {
+                return sort(itemA, itemB, orderFields.shift());
+            }
+
+            return 0;
+        }
+
+        return sort(itemA, itemB, orderFields.shift());
     },
 
     limit: 100

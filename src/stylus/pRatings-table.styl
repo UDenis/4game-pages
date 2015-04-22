@@ -1,5 +1,5 @@
 .pRatings {
-  &--table{
+  &--table {
     width: 100%;
     margin: 30px 0 0 0;
     border-spacing: 0;
@@ -10,11 +10,53 @@
       text-align: left;
       white-space: nowrap;
       border-bottom: 1px solid #b2b2b2;
+
+      &-sortable {
+        cursor: pointer;
+        color: #1663b3;
+      }
+
+      & div {
+        display: inline-block;
+        vertical-align: middle;
+
+        & span {
+          border-bottom: 1px dotted;
+        }
+      }
+
+      &--arrows {
+        position: relative;
+        display: inline-block;
+        width: 0;
+        height: 1em;
+
+        &:before {
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+
+        &-asc {
+
+        }
+
+        &-desc {
+          width: 1.5em;
+          font-size: 8px;
+          vertical-align: 4px;
+
+          &:before {
+            content: '▼';
+          }
+        }
+
+      }
     }
 
     &--cell {
       padding: 8px 15px 8px 0;
-      font: 13px/16px Arial,Sans-Serif;
+      font: 13px / 16px Arial, Sans-Serif;
       white-space: nowrap;
     }
   }

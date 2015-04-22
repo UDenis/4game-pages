@@ -12,12 +12,26 @@ var commonTableHeaders = [
         }
     },
     {
-        title: 'Уровень, имя',
-        field: 'char',
+        title: 'Уровень',
+        field: 'level',
         format(item){
-            return `${item.level}, <b>${item.char}</b>`;
+            return `${item.level}`;
         }
     },
+    {
+        title: 'Лидер',
+        field: 'clan_lead',
+        format(item){
+            return item.clan_lead;
+        }
+    },
+    {
+        title:'Численность',
+        field: 'member_cnt',
+        format(item){
+            return item.member_cnt;
+        }
+    }
 
 ];
 
@@ -67,7 +81,10 @@ export default {
 
     url:'http://cdn.inn.ru/webdav/ratings/files/l2cl_clans.ratings.clans.json',
 
-    info: 'Top 100 кланов',
+    info(){
+        var h = new Date().getHours();
+        return `Top ${this.limit} кланов. Обновлено ${h} часов назад.`;
+    },
 
     tabs:[
         {label:'Репутация', value:'ByReputation'},
@@ -84,17 +101,61 @@ export default {
     ],
 
     tableHeaders:{
-        ByReputation: commonTableHeaders,
-        ByAmountOfLevels: commonTableHeaders,
+        ByReputation: commonTableHeaders.concat({
+            title:'Репутация',
+            field: 'clan_reputation_score',
+            sortable: true,
+            format(item){
+                return item.clan_reputation_score;
+            }
+        }),
+        ByAmountOfLevels: commonTableHeaders.concat({
+            title:'Сумма уровней всех членов клана',
+            sortable:true,
+            field:'sum_member_level',
+            format(item){
+                return item.sum_member_level;
+            }
+        }),
         ByAdena: commonTableHeaders
     },
 
-    search(item, searchString){
-        return true
+    sortInfo:{
+        ByReputation:{
+            field: 'clan_reputation_score'
+        },
+        ByAmountOfLevels:{
+            field: 'sum_member_level'
+        }
     },
 
-    sort(a, b, orderBy){
-        return 0;
+    search(item, searchString){
+        return (item.char || '').toLowerCase().indexOf((searchString || '').toLowerCase())>=0;
+    },
+
+    sort(itemA, itemB, orderBy){
+        var orderFields = [orderBy, 'level', 'member_cnt', 'clan'];
+
+        function sort(itemA, itemB, orderBy) {
+            var a = itemA[orderBy];
+            var b = itemB[orderBy];
+
+            if (a < b) {
+                return -1;
+            }
+
+            if (a > b) {
+                return 1;
+            }
+
+            if (orderFields.length) {
+                return sort(itemA, itemB, orderFields.shift());
+            }
+
+            return 0;
+        }
+
+        return sort(itemA, itemB, orderFields.shift());
     },
 
     limit: 1000

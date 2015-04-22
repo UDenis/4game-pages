@@ -31,7 +31,7 @@ var ratingsTabs = React.render(<RatingTabs
 
 var ratingsSearch = React.render(<RatingsSearch onSearch={onSearch}/>, document.getElementById('jsSearchSelector'));
 
-var table = React.render(<RatingTable/>, document.getElementById('jsTableSelector'));
+var table = React.render(<RatingTable onSort={onSortTable}/>, document.getElementById('jsTableSelector'));
 
 var infoElement = document.getElementById('jsInfo');
 
@@ -52,6 +52,7 @@ function onRatingSelected(ratingBy) {
 
     table.setProps({
         headers: ratingsInfo.tableHeaders[ratingsTabs.props.selected.value],
+        orderBy:ratingsInfo.sortInfo[ratingsTabs.props.selected.value].field,
         data: []
     });
 
@@ -63,9 +64,14 @@ function onServerSelected() {
     updateRatings();
 }
 
+function onSortTable(field){
+    updateRatings();
+}
+
 function onRatingTypeSelected(tab) {
     table.setProps({
         headers: ratingsInfo.tableHeaders[tab.value],
+        orderBy:ratingsInfo.sortInfo[tab.value].field,
         data: []
     });
     updateRatings();
@@ -109,8 +115,7 @@ function getFilter() {
 }
 
 function updateInfo(){
-    var www = 111;
-    infoElement.innerHTML=`${ratingsInfo.info}. Обновлено ${www} назад.`;
+    infoElement.innerHTML=`${ratingsInfo.info()}`;
 }
 
 
