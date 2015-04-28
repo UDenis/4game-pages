@@ -1,5 +1,22 @@
 import React from 'react'
 
+function debouncing(fn, timeout, context){
+    var t;
+    return function (){
+        if (t) {
+            clearTimeout(t);
+            t = null;
+        }
+        if (!t) {
+            var args = arguments;
+            t = setTimeout(()=> {
+                t = null;
+                fn.apply(context, args);
+            }, timeout);
+        }
+    };
+}
+
 export default React.createClass({
 
     getDefaultProps(){
@@ -14,10 +31,11 @@ export default React.createClass({
 
     componentDidMount(){
         this.input = React.findDOMNode(this.refs.input);
+        this.onChange = debouncing(this.onChange, 200, this);
     },
 
     onChange(){
-        this.onSearch()
+        this.onSearch();
     },
 
     onSearch(){

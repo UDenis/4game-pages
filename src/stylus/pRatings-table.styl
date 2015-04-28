@@ -10,6 +10,7 @@
       text-align: left;
       white-space: nowrap;
       border-bottom: 1px solid #b2b2b2;
+      width: auto;
 
       &-sortable {
         cursor: pointer;
@@ -18,6 +19,10 @@
 
       &-right {
         text-align: right;
+      }
+
+      &-first {
+        width: 55px;
       }
 
       & div {
@@ -66,6 +71,15 @@
       &-right {
         text-align: right;
       }
+
+      &-first {
+        width: 55px;
+      }
+
+      &-loading {
+        padding: 10px 0;
+        height:300px;
+      }
     }
 
     &--row {
@@ -82,6 +96,13 @@
           background-color: #ecf1f8;
           cursor: pointer;
         }
+      }
+
+      &-empty {
+        text-align: center;
+        cursor: default;
+        background-color: #fff;
+        color: #b2b2b2;
       }
     }
   }

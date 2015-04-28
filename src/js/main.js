@@ -53,7 +53,8 @@ function onRatingSelected(ratingBy) {
     table.setProps({
         headers: ratingsInfo.tableHeaders[ratingsTabs.props.selected.value],
         orderBy:ratingsInfo.sortInfo[ratingsTabs.props.selected.value].field,
-        data: []
+        data: [],
+        loading: true
     });
 
     updateRatings();
@@ -69,11 +70,6 @@ function onSortTable(field){
 }
 
 function onRatingTypeSelected(tab) {
-    table.setProps({
-        headers: ratingsInfo.tableHeaders[tab.value],
-        orderBy:ratingsInfo.sortInfo[tab.value].field,
-        data: []
-    });
     updateRatings();
 }
 
@@ -83,17 +79,27 @@ function onSearch() {
 
 function updateRatings() {
     var filter = getFilter();
-    table.setProps({
-        loading: true,
-        data: []
-    });
+
+    var t = setTimeout(()=> {
+        table.setProps({
+            loading: true,
+            data: []
+        });
+    }, 10);
+
     ratingsStore.load(filter)
+        .then((data)=>{
+            clearTimeout(t);
+            return data;
+        })
         .then(updateTable.bind(null, filter));
 
 }
 
 function updateTable(filter, data) {
     table.setProps({
+        headers: ratingsInfo.tableHeaders[ratingsTabs.props.selected.value],
+        orderBy:ratingsInfo.sortInfo[ratingsTabs.props.selected.value].field,
         data: data,
         loading: false
     });

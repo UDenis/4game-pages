@@ -17,11 +17,23 @@ var ratingsUri = {
 
 function loadRatings(ratingsType) {
     var ratings = loadRatings[ratingsType];
+    var defer = $.Deferred();
+
     if (!ratings) {
         ratings = loadRatings[ratingsType] = $.ajax(ratingsUri[ratingsType]);
     }
 
-    return ratings;
+    ratings.then(resolvePromise(defer, 'resolve'), resolvePromise(defer, 'reject'));
+
+    return defer.promise();
+}
+
+function resolvePromise(defer, method){
+    return function (data){
+        setTimeout(()=>{
+            defer[method](data);
+        },5);
+    }
 }
 
 function filterAndSortRatings(filter, ratings) {

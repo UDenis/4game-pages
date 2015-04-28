@@ -8,7 +8,11 @@ var commonTableHeaders = [
     {
         title: 'Клан', field: 'clan',
         format(item) {
-            return `<div class="l2c--clan-img" style="background-image: url('data:image/png;base64,${item.clan_bitmap}');"></div>${item.clan}`;
+            if (item.clan) {
+                var bg = item.clan_bitmap ? `background-image: url('data:image/png;base64,${item.clan_bitmap}');` : '';
+                return `<div class="l2c--clan-img" style="${bg}"></div>${item.clan}`;
+            }
+            return '';
         }
     },
     {
@@ -16,6 +20,16 @@ var commonTableHeaders = [
         field: 'level',
         format(item){
             return `${item.level}`;
+        }
+    },
+    {
+        title: 'Альянс',
+        field: 'level',
+        format(item){
+            if (item.alliance) {
+                return `${item.alliance}`;
+            }
+            return '';
         }
     },
     {
@@ -95,7 +109,7 @@ export default {
     servers: [
         {label: 'Все', value: ''},
         {label: 'Gran Kain', value: 'Gran Kain'},
-        {label: 'Shilien', value: 'Shillien'},
+        {label: 'Shillien', value: 'Shillien'},
         {label: 'Eva', value: 'Eva'},
         {label: 'Maphr', value: 'Maphr'}
     ],
@@ -133,34 +147,35 @@ export default {
     },
 
     search(item, searchString){
-        return (item.char || '').toLowerCase().indexOf((searchString || '').toLowerCase())>=0;
+        return (item.clan || '').toLowerCase().indexOf((searchString || '').toLowerCase())>=0;
     },
 
     sort(itemA, itemB, orderBy){
-        var orderFields = [orderBy, 'level', 'member_cnt', 'clan'];
+        var orderFields = [orderBy, true, 'level', true, 'member_cnt', true, 'clan', false];
 
-        function sort(itemA, itemB, orderBy) {
+        function sort(itemA, itemB, orderBy, desc) {
             var a = itemA[orderBy];
             var b = itemB[orderBy];
+            var i = desc ? 1 : -1;
 
             if (a < b) {
-                return -1;
+                return i;
             }
 
             if (a > b) {
-                return 1;
+                return -i;
             }
 
             if (orderFields.length) {
-                return sort(itemA, itemB, orderFields.shift());
+                return sort(itemA, itemB, orderFields.shift(), orderFields.shift());
             }
 
             return 0;
         }
 
-        return sort(itemA, itemB, orderFields.shift());
+        return sort(itemA, itemB, orderFields.shift(), orderFields.shift());
     },
 
-    limit: 1000
+    limit: 100
 
 }

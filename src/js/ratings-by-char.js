@@ -8,7 +8,11 @@ var commonTableHeaders = [
     {
         title: 'Клан', field: 'clan',
         format(item) {
-            return `<div class="l2c--clan-img" style="background-image: url('data:image/png;base64,${item.clan_bitmap}');"></div>${item.clan}`;
+            if (item.clan) {
+                var bg = item.clan_bitmap ? `background-image: url('data:image/png;base64,${item.clan_bitmap}');` : '';
+                return `<div class="l2c--clan-img" style="${bg}"></div>${item.clan}`;
+            }
+            return '';
         }
     },
     {
@@ -91,7 +95,7 @@ export default {
     servers: [
         {label: 'Все', value: ''},
         {label: 'Gran Kain', value: 'Gran Kain'},
-        {label: 'Shilien', value: 'Shilien'},
+        {label: 'Shillien', value: 'Shillien'},
         {label: 'Eva', value: 'Eva'},
         {label: 'Maphr', value: 'Maphr'}
     ],
@@ -104,9 +108,9 @@ export default {
             }
         }),
         ByPvP: commonTableHeaders.concat({
-            title: 'PvP', field: '',sortable:true,
+            title: 'PvP', field: 'duel_cnt',sortable:true,
             format(item){
-                return '????';//prettifyNumber(item.exp_cnt);
+                return prettifyNumber(item.duel_cnt);
             }
         }, {
             title: 'PK', field: 'pk_cnt',sortable:true,
@@ -119,7 +123,7 @@ export default {
 
     sortInfo:{
         BySkill:{field: 'exp_cnt'},
-        ByPvP: {field: ''},
+        ByPvP: {field: 'duel_cnt'},
         ByAdena: {field: ''}
     },
 
@@ -128,30 +132,31 @@ export default {
     },
 
     sort(itemA, itemB, orderBy){
-        var orderFields = [orderBy, 'level', 'use_time_sec', 'char'];
+        var orderFields = [orderBy, true, 'level', true, 'use_time_sec', true, 'char', false];
 
-        function sort(itemA, itemB, orderBy) {
+        function sort(itemA, itemB, orderBy, desc) {
             var a = itemA[orderBy];
             var b = itemB[orderBy];
+            var i = desc ? 1 : -1;
 
             if (a < b) {
-                return -1;
+                return i;
             }
 
             if (a > b) {
-                return 1;
+                return -i;
             }
 
             if (orderFields.length) {
-                return sort(itemA, itemB, orderFields.shift());
+                return sort(itemA, itemB, orderFields.shift(), orderFields.shift());
             }
 
             return 0;
         }
 
-        return sort(itemA, itemB, orderFields.shift());
+        return sort(itemA, itemB, orderFields.shift(), orderFields.shift());
     },
 
-    limit: 100
+    limit: 1000
 
 }
