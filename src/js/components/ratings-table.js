@@ -17,8 +17,7 @@ export default React.createClass({
     },
 
     onSort(orderBy){
-        this.setProps({orderBy})
-
+        //this.setProps({orderBy})
         if (this.props.onSort) {
             setTimeout(()=>this.props.onSort(orderBy));
         }
@@ -57,7 +56,7 @@ export default React.createClass({
                             }
                             return (
                                 <th onClick={this.onSort.bind(this, header.field)}
-                                    className={this.cellClassName(index,'pRatings--table--header-cell pRatings--table--header-cell-sortable')}>
+                                    className={this.headerCellClass(index,'pRatings--table--header-cell pRatings--table--header-cell-sortable')}>
                                     <div>
                                         <span>{header.title}</span>
                                     </div>
@@ -66,7 +65,7 @@ export default React.createClass({
                             );
                         } else {
                             return (
-                                <th className={this.cellClassName(index,'pRatings--table--header-cell')}>{header.title}</th>
+                                <th className={this.headerCellClass(index,'pRatings--table--header-cell')}>{header.title}</th>
                             );
                         }
                     })
@@ -142,16 +141,24 @@ export default React.createClass({
     },
 
     cellClassName(index, initClassNames){
+        var className = [initClassNames];
+
         if (index === this.props.headers.length - 1) {
-            return initClassNames + ' pRatings--table--header-cell-right';
-        } else {
-            return initClassNames;
+            className.push('pRatings--table--cell-right');
         }
+        className.push(`pRatings--table--cell-${this.props.headers[index].field}`);
+
+        return className.join(' ');
     },
 
-    headerCellClass(){
-        var className = ['pRatings--table--header-cell'];
+    headerCellClass(index, initClassNames){
+        var className = [initClassNames];
 
-        return className.join('/');
+        if (index === this.props.headers.length - 1) {
+            className.push('pRatings--table--header-cell-right');
+        }
+        className.push(`pRatings--table--header-cell-${this.props.headers[index].field}`);
+
+        return className.join(' ');
     }
 });

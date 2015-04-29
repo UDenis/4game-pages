@@ -38,6 +38,7 @@ var infoElement = document.getElementById('jsInfo');
 onRatingSelected(ratingsSelector.props.selected);
 
 var ratingsInfo;
+var orderBy;
 function onRatingSelected(ratingBy) {
     ratingsInfo = ratingsFitlterInfo[ratingBy.value];
     serverSelector.setProps({
@@ -49,10 +50,10 @@ function onRatingSelected(ratingBy) {
         items: ratingsInfo.tabs,
         selected: ratingsInfo.tabs[0]
     });
-
+    orderBy = ratingsInfo.sortInfo[ratingsTabs.props.selected.value].field;
     table.setProps({
         headers: ratingsInfo.tableHeaders[ratingsTabs.props.selected.value],
-        orderBy:ratingsInfo.sortInfo[ratingsTabs.props.selected.value].field,
+        orderBy:orderBy,
         data: [],
         loading: true
     });
@@ -66,10 +67,13 @@ function onServerSelected() {
 }
 
 function onSortTable(field){
+    orderBy = field;
+    console.log("SORT " + field);
     updateRatings();
 }
 
 function onRatingTypeSelected(tab) {
+    orderBy = ratingsInfo.sortInfo[tab.value].field;
     updateRatings();
 }
 
@@ -99,7 +103,7 @@ function updateRatings() {
 function updateTable(filter, data) {
     table.setProps({
         headers: ratingsInfo.tableHeaders[ratingsTabs.props.selected.value],
-        orderBy:ratingsInfo.sortInfo[ratingsTabs.props.selected.value].field,
+        orderBy:orderBy,
         data: data,
         loading: false
     });
@@ -112,7 +116,8 @@ function getFilter() {
             return ratingsSearch.props.searchString ? ratingsInfo.search(item, ratingsSearch.props.searchString) : true;
         },
         sort(a, b){
-            return ratingsInfo.sort(a, b, table.props.orderBy);
+            debugger;
+            return ratingsInfo.sort(a, b, orderBy);
         },
         server: serverSelector.props.selected.value,
         tab: ratingsTabs.props.selected.value,

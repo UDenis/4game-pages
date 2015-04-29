@@ -8,9 +8,14 @@ var commonTableHeaders = [
     {
         title: 'Клан', field: 'clan',
         format(item) {
+            var bg = getBg(item.alliance_bitmap);
+            var alianceImage = `<div class="l2c--alliance-img" style="${bg}"></div>`;
+
+            bg = getBg(item.clan_bitmap);
+            var clanImage = `<div class="l2c--clan-img" style="${bg}"></div>`;
+
             if (item.clan) {
-                var bg = item.clan_bitmap ? `background-image: url('data:image/png;base64,${item.clan_bitmap}');` : '';
-                return `<div class="l2c--clan-img" style="${bg}"></div>${item.clan}`;
+                return `${alianceImage}${clanImage}${item.clan}`;
             }
             return '';
         }
@@ -35,6 +40,10 @@ var commonTableHeaders = [
         }
     }
 ];
+
+function getBg(image){
+    return image ? `background-image: url('data:image/png;base64,${image}');` : '';
+}
 
 // Разбивает укачанное число на разряды
 function prettifyNumber(value) {
