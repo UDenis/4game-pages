@@ -1,13 +1,13 @@
-import ServerSelector from './components/server-selector.js'
-import RatingSelector from './components/ratings-selector.js'
-import RatingTable from './components/ratings-table.js'
-import RatingTabs from './components/ratings-tabs.js'
-import RatingsSearch from './components/ratings-search.js'
+import ServerSelector from '../js/components/server-selector'
+import RatingSelector from '../js/components/ratings-selector'
+import RatingTable from '../js/components/ratings-table'
+import RatingTabs from '../js/components/ratings-tabs'
+import RatingsSearch from '../js/components/ratings-search'
 
-import ratingsStore from './ratings-store.js'
+import ratingsStore from '../js/ratings-store'
 
-import ratingsByChar from './ratings-by-char.js'
-import ratingsByClan from './ratings-by-clan.js'
+import ratingsByChar from '../js/ratings-by-char'
+import ratingsByClan from '../js/ratings-by-clan'
 
 var ratingsBy = [
     {label: 'Персонажей', value: 'byPersonage'},
@@ -116,7 +116,6 @@ function getFilter() {
             return ratingsSearch.props.searchString ? ratingsInfo.search(item, ratingsSearch.props.searchString) : true;
         },
         sort(a, b){
-            debugger;
             return ratingsInfo.sort(a, b, orderBy);
         },
         server: serverSelector.props.selected.value,
