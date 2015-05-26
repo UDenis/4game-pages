@@ -88,7 +88,7 @@ function formatSeconds(seconds) {
 
 export default {
 
-    url: 'http://cdn.inn.ru/webdav/ratings/files/l2cl_chars.ratings.characters.json',
+    url: 'https://cdn.inn.ru/webdav/ratings/files/l2cl_chars.ratings.characters.json',
 
     info(){
         var h = new Date().getHours();

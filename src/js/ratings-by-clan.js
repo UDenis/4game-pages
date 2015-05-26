@@ -101,7 +101,7 @@ function formatSeconds(seconds){
 
 export default {
 
-    url:'http://cdn.inn.ru/webdav/ratings/files/l2cl_clans.ratings.clans.json',
+    url:'https://cdn.inn.ru/webdav/ratings/files/l2cl_clans.ratings.clans.json',
 
     info(){
         var h = new Date().getHours();
