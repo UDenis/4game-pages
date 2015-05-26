@@ -30,7 +30,25 @@
     </div>
     <script src="../js/components/react/react.js" data-4game-ignore="true"></script>
     <script src="../js/components/jquery/dist/jquery.js" data-4game-ignore="true"></script>
-    <script src="./main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function loadScript(src) {
+                var script = document.createElement('script');
+                script.async = true;
+                script.src = './main.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(script, s);
+            }
+            if (typeof require !== 'undefined') {
+                require(['packages/react'], function(React) {
+                    window.React = React;
+                    loadScript('./main.js');
+                })
+            } else {
+                loadScript('./main.js');
+            }
+        });
+    </script>
 </section>
 </body>
 
