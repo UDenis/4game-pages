@@ -1,4 +1,4 @@
-import React from 'react';
+import React from '../lib/react';
 
 export default React.createClass({
 

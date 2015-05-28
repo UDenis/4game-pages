@@ -89,4 +89,5 @@ gulp.task('js', function(){
 });
 
 gulp.task('build', ['css', 'js', 'html']);
+gulp.task('default', ['build']);
 

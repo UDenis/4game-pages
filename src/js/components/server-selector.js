@@ -1,5 +1,5 @@
-import React from 'react'
-import SelectorMixin from './selector-mixin.js'
+import React from '../lib/react';
+import SelectorMixin from './selector-mixin'
 
 export default React.createClass({
 

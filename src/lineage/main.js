@@ -1,3 +1,4 @@
+import React from '../js/lib/react'
 import ServerSelector from '../js/components/server-selector'
 import RatingSelector from '../js/components/ratings-selector'
 import RatingTable from '../js/components/ratings-table'
@@ -17,7 +18,6 @@ var ratingsBy = [
 var ratingsFitlterInfo = {
     byPersonage: ratingsByChar,
     byClan: ratingsByClan
-
 }
 
 var ratingsSelector = React.render(<RatingSelector items={ratingsBy} selected={ratingsBy[0]}

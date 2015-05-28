@@ -1,4 +1,4 @@
-import React from 'react'
+import React from '../lib/react';
 
 function debouncing(fn, timeout, context){
     var t;

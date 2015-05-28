@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import $ from './lib/jquery';
 
 import ratingsByChar from './ratings-by-char.js'
 import ratingsByClan from './ratings-by-clan.js'
