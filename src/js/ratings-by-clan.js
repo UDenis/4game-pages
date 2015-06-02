@@ -109,9 +109,9 @@ export default {
     },
 
     tabs:[
-        {label:'Репутация', value:'ByReputation'},
+        {label:'Репутация', value:'ByReputation', tooltip: '*количество репутации, заработанной кланом за все время'},
         {label:'Сумма уровней', value:'ByAmountOfLevels'},
-        {label:'Адена', value:'ByAdena'},
+        {label:'Адена', value:'ByAdena', tooltip: 'Рейтинг строится по количеству адены, находящейся в клановом хранилище'},
     ],
 
     servers: [
@@ -150,7 +150,7 @@ export default {
             field: 'sum_member_level'
         },
         ByAdena: {
-            field: ''
+            field: 'rank_adena_cnt_server'
         }
     },
 

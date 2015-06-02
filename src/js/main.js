@@ -10,8 +10,8 @@ import ratingsByChar from './ratings-by-char.js'
 import ratingsByClan from './ratings-by-clan.js'
 
 var ratingsBy = [
-    {label: 'Персонажей', value: 'byPersonage'},
-    {label: 'Кланов', value: 'byClan'}
+    {label: 'Персонажи', value: 'byPersonage'},
+    {label: 'Кланы', value: 'byClan'}
 ];
 
 var ratingsFitlterInfo = {
@@ -116,7 +116,6 @@ function getFilter() {
             return ratingsSearch.props.searchString ? ratingsInfo.search(item, ratingsSearch.props.searchString) : true;
         },
         sort(a, b){
-            debugger;
             return ratingsInfo.sort(a, b, orderBy);
         },
         server: serverSelector.props.selected.value,

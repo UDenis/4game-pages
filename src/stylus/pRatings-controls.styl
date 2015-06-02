@@ -15,7 +15,8 @@
           display: inline-block;
           position: relative;
           padding: 7px 18px;
-          font: 16px / 19px Arial, Sans-Serif;
+          font-size: 16px;
+          font-family: Arial, Sans-Serif;
           color: #000;
           text-overflow: ellipsis;
           background-color: #f6f6f6;
@@ -43,6 +44,47 @@
             cursor: default;
           }
 
+        }
+      }
+
+
+      &-tooltip {
+        display:none;
+      }
+
+      &-item {
+        display: inline-block;
+        position: relative;
+
+        &:hover {
+          & .pRatings--controls--radiolist-tooltip {
+            display: block;
+            position: absolute;
+            font-size: 16px;
+            background: #fff;
+            box-shadow 0 2px 4px -1px rgba(153, 153, 153, .7) inset, 0 5px 6px 0 #fff;
+            padding: 12px 10px;
+            border-radius: 5px;
+            border:1px solid #DCA;
+            top:46px;
+            background: #fffAF0;
+            
+            &:before{
+              content: '';
+              position: absolute;
+              display: inline-block;
+              border: 1px solid #DCA;
+              border-right: 0;
+              border-bottom: 0;
+              transform: rotate(45deg);
+              width: 13px;
+              height: 13px;
+              top: -8px;
+              right: 50px;
+              background :#fffAF0;
+              box-shadow: 3px 3px 6px -2px rgba(153,153,153,0.7) inset, 0 0px 0px 0 #fff;
+            }
+          }
         }
       }
     }
