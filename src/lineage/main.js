@@ -1,13 +1,14 @@
-import ServerSelector from './components/server-selector.js'
-import RatingSelector from './components/ratings-selector.js'
-import RatingTable from './components/ratings-table.js'
-import RatingTabs from './components/ratings-tabs.js'
-import RatingsSearch from './components/ratings-search.js'
+import React from '../js/lib/react'
+import ServerSelector from '../js/components/server-selector'
+import RatingSelector from '../js/components/ratings-selector'
+import RatingTable from '../js/components/ratings-table'
+import RatingTabs from '../js/components/ratings-tabs'
+import RatingsSearch from '../js/components/ratings-search'
 
-import ratingsStore from './ratings-store.js'
+import ratingsStore from '../js/ratings-store'
 
-import ratingsByChar from './ratings-by-char.js'
-import ratingsByClan from './ratings-by-clan.js'
+import ratingsByChar from '../js/ratings-by-char'
+import ratingsByClan from '../js/ratings-by-clan'
 
 var ratingsBy = [
     {label: 'Персонажи', value: 'byPersonage'},
@@ -17,7 +18,6 @@ var ratingsBy = [
 var ratingsFitlterInfo = {
     byPersonage: ratingsByChar,
     byClan: ratingsByClan
-
 }
 
 var ratingsSelector = React.render(<RatingSelector items={ratingsBy} selected={ratingsBy[0]}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from '../lib/react';
 
 function debouncing(fn, timeout, context){
     var t;
@@ -30,7 +30,8 @@ export default React.createClass({
     },
 
     componentDidMount(){
-        this.input = React.findDOMNode(this.refs.input);
+        // this.input = React.findDOMNode(this.refs.input);
+        this.input = this.getDOMNode(); // React v0.12
         this.onChange = debouncing(this.onChange, 200, this);
     },
 

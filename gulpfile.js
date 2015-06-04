@@ -62,15 +62,16 @@ gulp.task('open', function(){
 });
 
 gulp.task('css', function(){
-    return gulp.src('./src/stylus/*-styles.styl')
+    return gulp.src('./src/*/*-styles.styl')
         .pipe($.stylus())
         .on('error', function (err) {
             // Make sure failed tests cause gulp to exit non-zero
             if (isDev) {
+                console.error(err);
                 this.emit('end'); //instead of erroring the stream, end it
             }
         })
-        .pipe(gulp.dest('./dist/css'));
+        .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('html', function(){
@@ -79,13 +80,14 @@ gulp.task('html', function(){
 });
 
 gulp.task('js', function(){
-    return gulp.src('./src/js/main.js')
+    return gulp.src('./src/*/main.js')
         .pipe($.browserify({
                 transform: [babelify]
             }
         ))
-        .pipe(gulp.dest('./dist/js'));
+        .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('build', ['css', 'js', 'html']);
+gulp.task('default', ['build']);
 
