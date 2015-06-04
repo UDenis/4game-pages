@@ -50,7 +50,7 @@ function onRatingSelected(ratingBy) {
         items: ratingsInfo.tabs,
         selected: ratingsInfo.tabs[0]
     });
-    orderBy = ratingsInfo.sortInfo[ratingsTabs.props.selected.value].field;
+    orderBy = ratingsInfo.sortInfo[ratingsTabs.props.selected.value];
     table.setProps({
         headers: ratingsInfo.tableHeaders[ratingsTabs.props.selected.value],
         orderBy:orderBy,
@@ -73,7 +73,7 @@ function onSortTable(field){
 }
 
 function onRatingTypeSelected(tab) {
-    orderBy = ratingsInfo.sortInfo[tab.value].field;
+    orderBy = ratingsInfo.sortInfo[tab.value];
     updateRatings();
 }
 

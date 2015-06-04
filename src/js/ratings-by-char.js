@@ -131,9 +131,9 @@ export default {
     },
 
     sortInfo:{
-        BySkill:{field: 'exp_cnt'},
-        ByPvP: {field: 'duel_cnt'},
-        ByAdena: {field: 'rank_adena_server'}
+        BySkill:{field: 'exp_cnt', desc:true},
+        ByPvP: {field: 'duel_cnt', desc:true},
+        ByAdena: {field: 'rank_adena_general', desc:false}
     },
 
     search(item, searchString){
@@ -141,7 +141,7 @@ export default {
     },
 
     sort(itemA, itemB, orderBy){
-        var orderFields = [orderBy, true, 'level', true, 'use_time_sec', true, 'char', false];
+        var orderFields = [orderBy.field, orderBy.desc, 'level', true, 'use_time_sec', true, 'char', false];
 
         function sort(itemA, itemB, orderBy, desc) {
             var a = itemA[orderBy];

@@ -144,13 +144,16 @@ export default {
 
     sortInfo:{
         ByReputation:{
-            field: 'clan_reputation_score'
+            field: 'clan_reputation_score',
+            desc:true
         },
         ByAmountOfLevels:{
-            field: 'sum_member_level'
+            field: 'sum_member_level',
+            desc:true
         },
         ByAdena: {
-            field: 'rank_adena_cnt_server'
+            field: 'rank_adena_cnt_general',
+            desc:false
         }
     },
 
@@ -159,7 +162,7 @@ export default {
     },
 
     sort(itemA, itemB, orderBy){
-        var orderFields = [orderBy, true, 'level', true, 'member_cnt', true, 'clan', false];
+        var orderFields = [orderBy.field, orderBy.desc, 'level', true, 'member_cnt', true, 'clan', false];
 
         function sort(itemA, itemB, orderBy, desc) {
             var a = itemA[orderBy];
