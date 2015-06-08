@@ -19,7 +19,7 @@ export default React.createClass({
     onSort(orderBy){
         //this.setProps({orderBy})
         if (this.props.onSort) {
-            setTimeout(()=>this.props.onSort(orderBy));
+            setTimeout(()=>this.props.onSort({field:orderBy, desc: true}));
         }
     },
 
@@ -39,7 +39,7 @@ export default React.createClass({
     },
 
     getTableHeader(){
-        var orderBy = this.props.orderBy;
+        var orderBy = (this.props.orderBy || {}).field;
         return (
             <thead>
             <tr>

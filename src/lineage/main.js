@@ -68,7 +68,6 @@ function onServerSelected() {
 
 function onSortTable(field){
     orderBy = field;
-    console.log("SORT " + field);
     updateRatings();
 }
 
@@ -110,6 +109,8 @@ function updateTable(filter, data) {
 }
 
 function getFilter() {
+    console.log('SORT BY', orderBy);
+
     return {
         ratingBy: ratingsSelector.props.selected.value,
         search(item){
