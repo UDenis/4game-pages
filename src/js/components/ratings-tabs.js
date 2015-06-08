@@ -32,7 +32,7 @@ export default React.createClass({
     renderTooltip(item){
         if (item.tooltip){
             return (
-                <span className="pRatings--controls--radiolist-tooltip">{item.tooltip}</span>
+                <span className="pRatings--controls--radiolist-tooltip"  dangerouslySetInnerHTML={{__html : item.tooltip}}></span>
             );
         } else {
             return null;

@@ -109,9 +109,9 @@ export default {
     },
 
     tabs:[
-        {label:'Репутация', value:'ByReputation', tooltip: '*количество репутации, заработанной кланом за все время'},
+        {label:'Репутация', value:'ByReputation', tooltip: 'Рейтинг строится по&nbsp;количеству репутации, заработанной кланом за&nbsp;все время'},
         {label:'Сумма уровней', value:'ByAmountOfLevels'},
-        {label:'Адена', value:'ByAdena', tooltip: 'Рейтинг строится по количеству адены, находящейся в клановом хранилище'},
+        {label:'Адена', value:'ByAdena', tooltip: 'Рейтинг строится по&nbsp;количеству адены, находящейся в&nbsp;клановом хранилище'},
     ],
 
     servers: [

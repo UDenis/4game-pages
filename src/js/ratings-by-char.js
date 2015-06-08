@@ -98,7 +98,7 @@ export default {
     tabs: [
         {label: 'Опыт', value: 'BySkill'},
         {label: 'PvP/PK', value: 'ByPvP'},
-        {label: 'Адена', value: 'ByAdena', tooltip: 'Рейтинг строится по количеству Адены, находящейся в инвентаре персонажа (без учета личного хранилища)'}
+        {label: 'Адена', value: 'ByAdena', tooltip: 'Рейтинг строится по&nbsp;количеству адены, находящейся в&nbsp;инвентаре персонажа (без учета личного хранилища)'}
     ],
 
     servers: [
